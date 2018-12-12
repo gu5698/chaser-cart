@@ -1,0 +1,26 @@
+// color
+$color-pri-1: (); // #3E3A39 grey
+@for $i from 1 through 10{
+    $color-pri-1: append($color-pri-1, rgba(62,58,57,$i/10));
+}
+$color-pri-2: (); // #FDD084 yellow
+@for $i from 1 through 10{
+    $color-pri-2: append($color-pri-2, rgba(253,208,132,$i/10));
+}
+$color-sec-1: (); // #00FAFC blue
+@for $i from 1 through 10{
+    $color-sec-1: append($color-sec-1, rgba(0,250,252,$i/10));
+}
+$color-sec-2: (); // #74D2A1 green
+@for $i from 1 through 10{
+    $color-sec-2: append($color-sec-2, rgba(116,210,161,$i/10));
+}
+
+
+// breakpoints
+$bp-xs: 0;
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+

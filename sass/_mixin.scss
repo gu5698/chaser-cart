@@ -1,0 +1,47 @@
+@mixin v-middle{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin h-center{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin v-h-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+@mixin poa-trbl-0{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+@mixin pof-trbl-0{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+@mixin hover {
+    @media (min-width: $bp-md) {
+        @content;
+    }
+}
+@mixin media-md {
+    @media (max-width: $bp-md) {
+        @content;
+    }
+}
+@mixin media-lg {
+    @media (max-width: $bp-lg) {
+        @content;
+    }
+}

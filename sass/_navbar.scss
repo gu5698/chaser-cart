@@ -1,0 +1,130 @@
+// ==========================================navbar
+.op1-vv{
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+li{
+    list-style-type: none;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: nth($color-pri-1, 8);
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    z-index: 1000;
+    @include media-md{
+        display: flex;
+        height: 50px;
+        background-color: nth($color-pri-1, 10);
+    }
+    & .navbar-toggle{
+        display: none;
+        line-height: 50px;
+        padding: 0 15px;
+        @include media-md{
+            display: inline-block;
+        }
+        & i{
+            color: #fff;
+            font-size: 20px;
+        }
+    }
+    & ul{
+        @include v-middle;
+        display: flex;
+        position: relative;
+        width: 100%;
+        padding: 0 30px;
+        font-size: 20px;
+        font-weight: 700;
+        transition: .5s;
+        @include media-lg{
+            font-size: 16px;
+        }
+        @include media-md{
+            flex-direction: column;
+            position: absolute;
+            transform: initial;
+            top: 100%;
+            background-color: nth($color-pri-1, 10);
+            font-size: 16px;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    & .navbar-logo{
+        margin-right: 30px;
+        @include media-lg{
+            margin-right: 10px;
+        }
+        @include media-md{
+            margin-right: initial;
+            align-self: center;
+        }
+        & img{
+            height: 60px;
+            vertical-align: middle;
+            @include media-md{
+                height: 40px;
+                margin: 10px 0;
+            }
+        }
+    }
+    & .navbar-item{
+        & a{
+            display: block;
+            text-decoration: none;
+        }
+        &:last-child{
+            @include media-md{
+                margin-bottom: 20px;
+            }
+        }
+        &:not(.navbar-logo) a{
+            @include v-middle;
+            position: relative;
+            color: #fff;
+            padding: 8px 20px;
+            white-space: nowrap;
+            @include media-lg{
+                padding: 8px 10px;
+            }
+            @include media-md{
+                top: initial;
+                transform: initial;
+                padding: initial;
+                padding-top: 10px;
+                padding-bottom: 6px;
+                border-bottom: 1px solid nth($color-pri-2, 10);
+            }
+        }
+        &.navbar-icon a{
+            padding: 10px;
+            @include media-md{
+                padding: 0 12px;
+                border: none;
+            }
+        }
+    }
+
+    & .icon-member{
+        font-size: 26px;
+        margin-left: auto;
+        @include media-md{
+            font-size: 22px;
+            line-height: 50px;
+        }
+    }
+    & .icon-cart{
+        font-size: 24px;
+        @include media-md{
+            font-size: 20px;
+            line-height: 50px;
+        }
+    }
+}

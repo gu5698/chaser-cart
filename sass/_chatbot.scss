@@ -1,0 +1,173 @@
+// ==========================================chatbot
+.chatbot{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    perspective: 200px;
+    z-index: 1000;
+    & .avatar{
+        position: relative;
+        bottom: -40px;
+        padding: 50px 10px 0;
+        cursor: pointer;
+        @include media-md{
+            display: none;
+        }
+        & img{
+            display: block;
+        }
+        & .chatbot-body{
+            width: 100px;
+            filter: drop-shadow(0 0 3px rgba(255,255,255,.8));
+        }
+        & .chatbot-head{
+            @include h-center;
+            position: absolute;
+            bottom: 124px;
+            height: 24px;
+            filter: drop-shadow(0 0 1px rgba(0,0,0,1));
+        }
+        & .chatbot-hat{
+            @include h-center;
+            position: absolute;
+            bottom: 148px;
+            height: 30px;
+            filter: drop-shadow(0 0 3px rgba(255,255,255,.8));
+        } 
+    }
+    & .greeting{
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        bottom: 48px;
+        left: 0;
+        transform: translateX(-100%);
+        width: 300%;
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s;
+        & .message{
+            padding: 10px 32px 10px 16px;
+            border-radius: 20px 20px 0 20px;
+            background-color: #eee;
+            box-shadow: 0 0 3px rgba(0,0,0,.8);
+        }
+        & i{
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 10px 5px 5px;
+            font-size: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+    & .message-window{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        bottom: -360px;
+        right: 4px;
+        height: 400px;
+        width: 300px;
+        background: nth($color-pri-1, 8) repeating-linear-gradient(to bottom, #000, #000 1px, transparent 1px, transparent 3px);
+        box-shadow: 0 0 3px nth($color-sec-1, 8);
+        transition: .5s;
+        @include media-md{
+            width: 60px;
+        }
+        &.show{
+            bottom: 4px;
+            @include media-md{
+                width: 300px;
+            }
+            & .message-head{
+                & .icon-minimize{
+                    transform: rotateX(180deg);
+                }
+            }
+            & .message-body{
+                margin-top: initial;
+            }
+        }
+        & .message-head{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            color: #ddd;
+            background: linear-gradient(to bottom, nth($color-pri-1, 10), transparent);
+            cursor: pointer;
+            @include media-md{
+                text-align: left;
+            }
+            & .title{
+                @include media-md{
+                    display: none;
+                }
+            }
+            & .icon-message{
+                @include media-md{
+                    padding: 8px 12px;
+                }
+            }
+            & *{
+                display: inline-block;
+            }
+            & .icon-minimize{
+                @include v-middle;
+                position: absolute;
+                right: 0;
+                padding: 8px 12px;
+                transform-origin: 50% 25%;
+                transition: .5s;
+            }
+        }
+        & .message-body{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 40px;
+            padding: 40px 12px 4px 12px;
+            flex-grow: 1;
+            background-color: nth($color-sec-1, 5);
+            overflow-y: auto;
+            transition: .6s;
+            & .message{
+                font-size: 14px;
+                padding: 6px 10px;
+                margin-bottom: 4px;
+                border-radius: 14px;
+                background-color: #fff;
+            }
+            & .message-user{
+                align-self: flex-end;
+            }
+        }
+        & .message-input{
+            display: flex;
+            flex-shrink: 0;
+            height: 50px;
+            padding: 2px;
+            & textarea{
+                display: block;
+                width: 100%;
+                padding: 4px;
+                font-size: 14px;
+                resize: none;
+                &:focus{
+                    outline: none;
+                }
+            }
+            & .icon-submit{
+                color: #fff;
+                font-size: 20px;
+                cursor: pointer;
+                padding: 0 12px;
+                line-height: 50px;
+            }
+        }
+    }
+}

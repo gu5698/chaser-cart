@@ -1,0 +1,225 @@
+@import 'var';
+
+
+.group{
+    margin: $sun;
+    .box{
+        padding: $sun;
+        margin: 50px;
+        img{
+            width: 100%;
+        }
+    }
+}
+
+@mixin margincenter() {
+    
+    // do
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
+
+.box-small{
+    @include margincenter();
+    margin: 200px;
+}
+
+.box-big{
+    @include margincenter();
+    height: 300px;
+    span{
+        top: 0;
+    }
+}
+
+@function add($good){
+    @return $good/2;
+}
+
+.card{
+    width: add(10);
+}
+
+@mixin fontSize($fontsize) {
+    font-size: $fontsize;
+    font-weight: bold;
+    h1{
+        font-size: $fontsize * 5;
+    }
+}
+
+body{
+    @include fontSize(18px);
+}
+
+@mixin margin ($width:60px, $left: 80px, $right: 100px){
+    width: $width;
+    margin-left: $left;
+    margin-right: $right;
+}
+
+.content {
+    @include margin(10px, 20px, 50px);
+}
+
+@mixin name($fontsize: null, $color: null) {
+    font-size: $fontsize;
+    color: $color;
+}
+
+@mixin boxs($name, $width) {
+    #{$name}{
+        width: $width
+    }
+}
+
+@include boxs('.boxname', 100px);
+
+@mixin btn($colorName, $bgcolor, $borderRadius: null, $width: 100px) {
+    .btn-#{$colorName}{
+        width: $width;
+        height: 30px;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        background-color: $bgcolor;
+        @include margincenter();
+        @include fontSize(20px);
+        border-radius: $borderRadius;
+        transition: .3s all ease-in-out;
+        // 偽類
+        &:hover{
+            background-color: darken($bgcolor, 6%);
+        }
+    }
+}
+
+@include btn(yellow, rgb(242, 255, 0));
+
+@include btn(green, rgb(5, 191, 42), 10px, 50px);
+
+@include btn(blue, rgb(0, 55, 273), 10px, 300px);
+
+@include btn(purple, purple, 20px, 400px);
+
+@for $i from 1 through 10{
+    .box{
+        width: $i * 10px;
+    }
+}
+
+@mixin edtor ($num){
+    @for $i from 1 through $num{
+        .box{
+            width: $i * 10px;
+        }
+    }
+}
+
+@include edtor(15);
+
+@mixin push-left($num){
+    @for $i from 1 through $num{
+        .push-left-#{$i}{
+            margin-left: $i * 1px;
+        }
+    }
+}
+
+@include push-left(100);
+
+@mixin push-dir($dir, $num) {
+    @for $i from 1 through $num{
+        .push-#{$dir}-#{$i}{
+            margin-#{$dir}: $i * 1px;
+        }
+    }
+}
+
+@mixin grid($num){
+    @for $i from 1 through $num{
+        .col-md-#{$i}{
+            width: ($i / $num) * 100%;
+        }
+    }
+}
+
+@include grid(12);
+
+$list : box1 box2 box3 grand boy;
+
+@each $pic in $list{
+    .img-#{$pic}{
+        background: url('images/#{$pic}.jpg')
+    }
+}
+
+@mixin theme ($theme){
+    @if $theme == yellow{
+        body{
+            background-color: yellow;
+            @content;
+        }
+    }
+    @else if $theme == blue{
+        body{
+            background-color: blue;
+            @content;
+        }
+    }
+    @else if $theme == green{
+        body{
+            background-color: green;
+            @content;
+        }
+    }
+}
+
+@include theme(yellow){
+    font-size: 20px;
+    color: blue;
+    .wrapper{
+        @include margincenter();
+    }
+}
+
+$mobile: 700px;
+$medium-min: 768px;
+$medium-max: 992px;
+$desktop: 1200px;
+
+@mixin rwd($breakpoint){
+    @if $breakpoint == mobile{
+        @media all and (max-width: $mobile) {
+            @content;
+        }
+    }
+    @else if $breakpoint == medium{
+        @media all and (min-width: $medium-min) and (max-width: $medium-max) {
+            @content;
+        }
+    }
+    @else if $breakpoint == desktop{
+        @media all and (min-width: $desktop) {
+            @content;
+        }
+    }
+}
+
+@include rwd(medium) {
+    //平板
+        .wrapper {
+            width: 60%;
+        }
+    }
+    
+    
+    @include rwd(desktop) {
+    //桌機
+        .wrapper {
+            width: 100%;
+        }
+    
+    }
+    

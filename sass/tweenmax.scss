@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    background-color: aqua;
+
+    @for $i from 1 to 10 {
+
+    }
+
+    [class ^= "box_"]{
+        width: 100px;
+        height: 100px;
+    }
+
+    .box_01{
+        background-color: aquamarine;
+    }
+
+    .box_02{
+        background-color: bisque;
+    }
+
+    .box_03{
+        background-color: blue;
+    }
+
+    .box_04{
+        background-color: green;
+    }
+    .box_06{
+        background-color: pink;
+    }
+    .box_07{
+        background-color: maroon;
+    }
+    .box_08{
+        background-color: peru;
+    }
+    .line{
+        border-bottom: 1px solid black;
+    }
+    .circle{
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+
+}
+.section{
+    width: 100vw;
+    height:100vh;
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: palegoldenrod;
+    }
+}
+.btn{
+    box-sizing: border-box;
+}
+
+#box_01{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+}
+
+#box_02{
+    width: 100px;
+    height: 100px;
+    background-color: palevioletred;
+}
+
+#trigger_01{
+    // height: 100vh;
+    // width: 100vw;
+}
+.scroll_box{
+    width: 100px;
+    height: 100px;
+    background-color: bisque;
+    margin: auto;
+}
+
+.section_07{
+    .toggleclass{
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        &.on{
+            background-color: blue;
+        }
+    }
+}
+
+.section_08 {
+    overflow: hidden;
+
+    .bgall {
+        width: 100%;
+        height: 100vh;
+        background-image: url(https://placem.at/places);
+        background-color: #000;
+        background-size: cover;
+        transform-origin: center;
+        transform: scale(1.2);
+        transition: transform 3s ease-out;
+        will-change: transform;
+        position: relative;
+        z-index: 0;
+
+        &.on {
+            transform: scale(1);
+        }
+        .trllbox {
+            width: 200px;
+            height: 80px;
+            background-color: rgb(8, 144, 168);
+            position: relative;
+            z-index: 1;
+            top: 400
+
+        }
+    }
+
+}
+.section_09 {
+    background-color: rgba(157, 255, 0, 0.61);
+    .scbox {
+        width: 300px;
+        height: 100px;
+
+    }
+    .scrollbox_01 {background-color: rgb(241, 88, 88);}
+    .scrollbox_02 {background-color: rgb(14, 168, 148);}
+    .scrollbox_03 {background-color: #fff;}
+}
+.section_10 {
+    overflow: hidden;
+    .bgsall {
+       width: 100%;
+       height: 100%;
+       position: absolute;
+    }
+    .bgall01 {background-color: rgb(0, 204, 177);}
+    .bgall02 {background-color: rgb(226, 33, 33);}
+    .bgall03 {background-color: rgb(110, 146, 9);}
+}
