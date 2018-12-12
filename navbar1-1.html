@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chaser</title>
+    <!-- reset -->
+    <link rel="stylesheet" href="css/css-reset.min.css">
+    <!-- fontawesome -->
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
+    <!-- grid -->
+    <link rel="stylesheet" href="css/grid.min.css">
+    <!-- custom -->
+    <link rel="stylesheet" href="css/cart.css">
+
+    <style>
+        * {
+        box-sizing: border-box; }
+
+        body {
+            /* height: 100vh; */
+            background: no-repeat center/cover url(images/cart/background.png);
+            position: relative;
+            font-family: 'Playfair Display', NotoSerifCJKtc, serif; }
+
+        .ml-auto {
+        margin-left: auto; }
+
+        .mr-auto {
+        margin-right: auto; }
+
+        /* .navbar {
+        background-color: rgba(62, 58, 57, 0.8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 90px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
+        .navbar ul {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            width: 100%;
+            padding: 0 30px;
+            font-size: 20px;
+            font-weight: 700; }
+
+        .navbar-logo img {
+        height: 60px;
+        vertical-align: top; }
+
+        .navbar-item a {
+        padding: 15px 0;
+        display: block;
+        text-decoration: none; }
+
+        .navbar-item:first-child {
+        margin-right: 30px; }
+
+        .navbar-item:not(.navbar-logo) a {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #fff;
+        padding: 8px 20px;
+        white-space: nowrap; }
+
+        .navbar-item.navbar-icon a {
+        padding: 10px; }
+
+        .icon-member {
+        font-size: 26px;
+        margin-left: auto; }
+
+        .icon-cart {
+        font-size: 24px; }   */
+        /* .navbar {
+            background-color: rgba(62, 58, 57, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            z-index: 1000;}
+            .navbar ul {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                width: 100%;
+                padding: 0 30px;
+                font-size: 20px;
+                font-weight: 700; }
+            .navbar li {
+                position: relative; }
+            .navbar li:hover .subMenu {
+                transform: translateY(0);
+                left: -21vw;
+                top: 90px;
+                opacity: 1; }
+            .navbar .navbar-logo img {
+                height: 60px;
+                vertical-align: top; }
+            .navbar .navbar-item a {
+                padding: 15px 0;
+                display: block;
+                text-decoration: none; }
+            .navbar .navbar-item:first-child {
+                margin-right: 30px; }
+            .navbar .navbar-item:not(.navbar-logo) a {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #fff;
+                padding: 8px 20px;
+                white-space: nowrap; }
+            .navbar .icon-member {
+                font-size: 26px;
+                margin-left: auto; }
+            .navbar .icon-cart {
+                font-size: 24px; }
+            .navbar .subMenu {
+                position: absolute;
+                left: -2000px;
+                top: 0;
+                opacity: 0;
+                transition: opacity .5s;
+                flex-direction: column;
+                color: #fff;}
+                .navbar .subMenu li {
+                width: 21vw;
+                background-color: rgb(62, 58, 57);
+                border-bottom: 1px solid gray;
+                padding: 5px; }
+                .navbar .subMenu .oral {
+                padding: 5px; }
+                .navbar .subMenu .oral span {
+                    color: #fdd084; }
+                .navbar .subMenu .oral .goods .cell {
+                    float: left;
+                    padding: 5px; }
+                    .navbar .subMenu .oral .goods .cell img {
+                    width: 100%; }
+                .navbar .subMenu .oral .goods .cell1 {
+                float: right;
+                padding: 5px; }
+                .navbar .subMenu .oral .goods .cell:first-child {
+                    width: 33.333333%; }
+                .navbar .subMenu .oral .goods .cell:nth-child(2) h3 {
+                    color: #fff; }
+                .navbar .subMenu .oral .goods .cell:nth-child(2) p {
+                    color: red;
+                    text-align: end; }
+                .navbar .subMenu .oral .goods .cell:nth-child(3) span {
+                    vertical-align: -webkit-baseline-middle; }
+                .navbar .subMenu .oral .goods .clearfix {
+                    clear: both; }
+                .navbar .subMenu .oral .plus{
+                    text-align: center;}
+                    .navbar .subMenu .oral .plus input {
+                        vertical-align: bottom;
+                        text-align: right; }
+                .navbar .subMenu .totalprice {
+                float: right; }
+                .navbar .subMenu .totalprice+a {
+                    text-align: center;
+                    transform: translateY(0);
+                    margin-top: 10px; } */
+    </style>
+
+</head>
+<body>
+    <!-- start navbar -->
+    <nav class="navbar">
+        <ul>
+            <li class="navbar-item navbar-logo"><a href="index.html"><img src="images/logo.svg" alt="logo"></a></li>
+            <li class="navbar-item"><a href="#">裝備客製<span class="d-block fz-6">CUSTOMIZE</span></a></li>
+            <li class="navbar-item"><a href="#">裝備商城<span class="d-block fz-6">MARKET</span></a></li>
+            <li class="navbar-item"><a href="#">傳奇特務藝廊<span class="d-block fz-6">GALLERY</span></a></li>
+            <li class="navbar-item"><a href="#">關於我們<span class="d-block fz-6">ABOUT</span></a></li>
+            <li class="navbar-item navbar-icon icon-member"><a href="#"><i class="fas fa-user-secret"></i></a></li>
+            <li class="navbar-item navbar-icon icon-cart"><a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <ul class="subMenu">
+                    <!-- <li>
+                        <div class="goods">
+                            <div class="cell">
+                                <img src="images/mall/item4.png" alt="">
+                            </div>
+                            <div class="cell cell1">
+                                <h3>特製鋼筆</h3>
+                                <p>$2000</p>
+                            </div>
+                            <div class="cell cell1">
+                                <span>
+                                    <i class="fas fa-times"></i>
+                                </span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="plus">
+                            <span>
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <input type="number" value="1" min="1">
+                            <span>
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                    </li> -->
+                    <li>
+                        <div class="goods">
+                            <div class="cell">
+                                <img src="images/mall/item4.png" alt="">
+                            </div>
+                            <div class="cell cell1">
+                                <span>
+                                    <i class="fas fa-times"></i>
+                                </span>
+                            </div>
+                            <div class="cell cell1">
+                                <h3>特製鋼筆</h3>
+                                <p>$2000</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="plus">
+                            <span>
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <input type="number" value="1" min="1">
+                            <span>
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <p class="totalprice">總計</p>
+                        <p class="totalprice">2000元</p>
+                        <a href="cart1.html" class="btn">前往結帳
+                            <i class="fas fa-caret-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- end navbar -->
+
+</body>
+</html>
