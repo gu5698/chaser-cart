@@ -10,7 +10,7 @@ $(function () {
     $("input").focus(function (event) {
         //label动态上升，升至顶部
         $(this).siblings("label").stop().animate({
-            "top": "-1rem"
+            "top": "-1.5rem"
         }, 500);
         //div模拟的下边框伸出，其width动态改变至input的width
         $(this).next(".bottom-line").stop().animate({
@@ -23,7 +23,7 @@ $(function () {
         if ($(this).val() == "") {
             //label动态下降，恢复原位
             $(this).siblings("label").stop().animate({
-                "top": "0"
+                "top": "-0.5rem"
             }, 500);
             //用div模拟的下边框缩回，其width动态恢复为默认宽度0
             $(this).next(".bottom-line").stop().animate({
@@ -51,7 +51,7 @@ function cancelLogin() {
 
 function init() {
     document.getElementsByClassName("pin").onclick = showLoginForm;
-    document.getElementById('close').onclick = cancelLogin;
+    // document.getElementById('close').onclick = cancelLogin;
 };
 
 window.onload = init;
@@ -68,23 +68,16 @@ function check_select() {
     }
 }
 
-// fullpage
-// new fullpage('#fullpage', {
-//     //options here
-//     autoScrolling: true,
-//     scrollHorizontally: true
-// });
-
-// //methods
-// fullpage_api.setAllowScrolling(false);
-
-// $(document).ready(function () {
-//     $('#fullpage').fullpage({
-//         //options here
-//         autoScrolling: true,
-//         scrollHorizontally: true
-//     });
-
-//     //methods
-//     $.fn.fullpage.setAllowScrolling(false);
-// });
+//cart1
+//增加list項目
+$(document).ready(function () {
+    // $("button").click(function () {
+    //     $(".product:last").after(function () {
+    //         return
+    //     });
+    // });
+    $(".fa-plus").click(function () {
+        var num = $("input").val() + 1;
+        $("input").val(num);
+    });
+});

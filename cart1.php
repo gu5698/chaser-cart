@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +28,7 @@
         <img src="images/cart/background.png" alt="">
     </div>
 
-    <!-- <div class="whitebg"></div> -->
+    <div class="whitebg"></div>
 
     <div class="container">
         <div class="row">
@@ -53,119 +56,52 @@
         </div>
     </div>
 
-<div class="whitebg">
-
-    <div class="container title dn c3">
+    <div class="container title dn">
         <div class="row">
-            <div class="col-8 offset-3 list_border">
+            <div class="col-md-2 offset-md-3">
+                <p>商品資料</p>
+            </div>
+            <div class="col-md-2 offset-md-o125">
+                <p>單件價格</p>
+            </div>
+            <div class="col-md-2 offset-md-o25">
+                <p>數量</p>
+            </div>
+            <div class="col-md-2 offset-md-o375">
+                <p>小計</p>
+            </div>
+        </div>
+    </div>
+
+    <?php
+        $total = 0;
+        if(isset($_SESSION["pname"]) === false){
+            $msg = "<center>尚無購物資料</center>";
+        }else{
+            foreach($_SESSION["pname"] as $psn => $pname) {
+                    $subTotal = $_SESSION["price"][$psn] * $_SESSION["qty"][$psn];
+                    $total += $subTotal;
+
+	?>
+    <form action="cartUpdate.php">
+        <input type="hidden" name="psn" value="<?php echo $psn;?>">
+
+    <div class="container products">
+        <div class="row">
+            <div class="col-5 col-md-3">
+                <img class="img" src="images/mall/item4.png" alt="">
+            </div>
+            <div class="col-6 detail col-md-9">
                 <div class="row">
                     <div class="col-md-3">
-                        <p>商品資料</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>單件價格</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p>數量</p>
+                        <h3>特製鋼筆</h3>
+                        <p>毒針</p>
+                        <p>錄音</p>
                     </div>
                     <div class="col-md-2">
-                        <p>小計</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container products">
-        <div class="row">
-            <div class="col-5 col-md-3">
-                <img class="img" src="images/mall/item4.png" alt="">
-            </div>
-            <div class="col-6 list_border col-md-8">
-                <div class="row">
-                    <div class="col-9 col-md-3">
-                        <h3>特製鋼筆</h3>
-                        <p>毒針</p>
-                        <p>錄音</p>
-                    </div>
-                    <div class="col-9 col-md-2">
                         <p>2000</p>
                     </div>
-                    <div class="col-9 col-md-4 quantity">
-                        <span class="g-c">
-                            <i class="fas fa-minus"></i>
-                        </span>
-                        <input type="number" value="1">
-                        <span class="g-c">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                    </div>
-                    <div class="col-md-2 dn">
-                        <p>2000</p>
-                    </div>
-                    <div class="col-1 col-md-1 drop">
-                        <span class="g-c">
-                            <i class="fas fa-times"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container products">
-        <div class="row">
-            <div class="col-5 col-md-3">
-                <img class="img" src="images/mall/item4.png" alt="">
-            </div>
-            <div class="col-6 list_border col-md-8">
-                <div class="row">
-                    <div class="col-9 col-md-3">
-                        <h3>特製鋼筆</h3>
-                        <p>毒針</p>
-                        <p>錄音</p>
-                    </div>
-                    <div class="col-9 col-md-2">
-                        <p>2000</p>
-                    </div>
-                    <div class="col-9 col-md-4 quantity">
-                        <span class="g-c">
-                            <i class="fas fa-minus"></i>
-                        </span>
-                        <input type="number" value="1">
-                        <span class="g-c">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                    </div>
-                    <div class="col-md-2 dn">
-                        <p>2000</p>
-                    </div>
-                    <div class="col-1 col-md-1 drop">
-                        <span class="g-c">
-                            <i class="fas fa-times"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container products">
-        <div class="row">
-            <div class="col-5 col-md-3">
-                <img class="img" src="images/mall/item4.png" alt="">
-            </div>
-            <div class="col-6 list_border col-md-8">
-                <div class="row">
-                    <div class="col-9 col-md-3">
-                        <h3>特製鋼筆</h3>
-                        <p>毒針</p>
-                        <p>錄音</p>
-                    </div>
-                    <div class="col-9 col-md-2">
-                        <p>2000</p>
-                    </div>
-                    <div class="col-9 col-md-4 quantity">
+                    <div class="col-10 col-md-4 quantity">
                         <span class="g-c">
                             <i class="fas fa-minus"></i>
                         </span>
@@ -198,8 +134,6 @@
         </div>
     </div>
 
-</div>
-
     <div class="container finbtn">
         <div class="row">
             <div class="col-5 offset-1 col-md-5">
@@ -207,7 +141,7 @@
                     <i class="fas fa-shopping-basket"></i>繼續購物
                 </a>
             </div>
-            <div class="col-5 col-md-5">
+            <div class="col-5 col-md-5 t-r">
                 <a href="cart2.html" class="btn">下一步
                     <i class="fas fa-caret-right"></i>
                 </a>

@@ -1,0 +1,10 @@
+# 忽略 node_modules 檔案
+node_modules
+
+# 忽略 package-lock.json 檔案
+package-lock.json
+
+fonts/NotoSerifCJKtc-hinted/
+fonts/fa-solid-900.woff2
+
+cart_C 拷貝

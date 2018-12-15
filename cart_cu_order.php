@@ -1,8 +1,8 @@
 <?php
 $errMsg = "";
 try {
-	require_once("connectBooks.php");
-	$sql = "select * from orders";
+	require_once("connectBooks1.php");
+	$sql = "SELECT * FROM cu_order NATURAL JOIN cu_order_item NATURAL JOIN cu_order_item_attr";
 	$orders = $pdo -> query( $sql );
 } catch (PDOException $e) {
 	$errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
@@ -29,16 +29,17 @@ try {
                     <a class="navbar-brand" href="#" style="border-radius: 50%;overflow: hidden;">
                         <img src="images/head.jpg" alt="">
                     </a>
-                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">會員資料管理</a>
-                    <a class="nav-link active" id="v-pills-order-tab" data-toggle="pill" href="#v-pills-order" role="tab" aria-controls="v-pills-order" aria-selected="false">訂單管理</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">客製化訂單管理</a>
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false">會員資料管理</a>
+                    <a class="nav-link" id="v-pills-order-tab" data-toggle="pill" href="#v-pills-order" role="tab" aria-controls="v-pills-order" aria-selected="false">訂單管理</a>
+                    <a class="nav-link active" id="v-pills-cu_order-tab" data-toggle="pill" href="#v-pills-cu_order" role="tab" aria-controls="v-pills-cu_order" aria-selected="true">客製化訂單管理</a>
                     <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">購票查詢</a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"></div>
-                    <div class="tab-pane fade show active" id="v-pills-order" role="tabpanel" aria-labelledby="v-pills-order-tab">
+                    <div class="tab-pane fade" id="v-pills-order" role="tabpanel" aria-labelledby="v-pills-order-tab"></div>
+                    <div class="tab-pane fade show active" id="v-pills-cu_order" role="tabpanel" aria-labelledby="v-pills-cu_order-tab">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item active" aria-current="page">訂單</li>
@@ -47,10 +48,9 @@ try {
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                <th scope="col">訂單編號</th>
-                                <th scope="col">商品小計</th>
+                                <th scope="col">客製訂單編號</th>
+                                <th scope="col">客製商品編號</th>
                                 <th scope="col">會員編號</th>
-                                <th scope="col">優惠券編號</th>
                                 <th scope="col">總計</th>
                                 <th scope="col">訂單狀態</th>
                                 <th scope="col">訂單時間</th>
@@ -64,30 +64,26 @@ try {
                                     }else{
                                         while($prodRow = $orders->fetchObject()){
                                     ?>
-                                    <td> <a href="cart_orderdetail.php?order_id=<?php echo $prodRow->order_id;?>"> <?php echo $prodRow->order_id;?> </a> </td>
-                                    <td> <?php echo $prodRow->total;?> </td>
+                                    <td> <a href="cart_order_item.php?cu_order_id=<?php echo $prodRow->cu_order_id;?>"> <?php echo $prodRow->cu_order_id;?> </a> </td>
+                                    <td> <?php echo $prodRow->cu_product_id;?> </td>
                                     <td> <?php echo $prodRow->mem_id;?> </td>
-                                    <td> <?php echo $prodRow->coupon_id;?> </td>
-                                    <td> <?php echo $prodRow->grand_total;?> </td>
+                                    <td> <?php echo $prodRow->total;?> </td>
                                     <td>
                                         <select class="custom-select" id="inputGroupSelect02">
                                             <?php
-                                                if( $prodRow->order_stat == 0){
+                                                if( $prodRow->cu_order_stat == 0){
                                                     echo '<option selected value="1">未出貨</option>';
                                                 }else echo '<option value="1">未出貨</option>';
-                                                if ($prodRow->order_stat == 1) {
-                                                    echo '<option selected value="2">取消訂單</option>';
-                                                }else echo '<option value="2">取消訂單</option>';
-                                                if ($prodRow->order_stat == 2) {
-                                                    echo '<option selected value="3">已出貨</option>';
-                                                }else echo '<option value="3">已出貨</option>';
-                                                if ($prodRow->order_stat == 3) {
-                                                    echo '<option selected value="4">已結案</option>';
-                                                }else echo '<option value="4">已結案</option>';
+                                                if ($prodRow->cu_order_stat == 1) {
+                                                    echo '<option selected value="2">已出貨</option>';
+                                                }else echo '<option value="2">已出貨</option>';
+                                                if ($prodRow->cu_order_stat == 2) {
+                                                    echo '<option selected value="3">已結案</option>';
+                                                }else echo '<option value="3">已結案</option>';
                                             ?>
                                         </select>
                                     </td>
-                                    <td> <?php echo $prodRow->order_time;?> </td>
+                                    <td> <?php echo $prodRow->cu_order_time;?> </td>
                                 </tr>
                             </tbody>
                                     <?php
@@ -96,7 +92,6 @@ try {
                                     ?>
                         </table>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"></div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"></div>
                 </div>
             </div>
